@@ -5,10 +5,10 @@ import 'package:mc_project/pages/home_page.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp(options: firebaseOptions);
+  await Firebase.initializeApp(options: firebaseOptions);
 
 
   //? registering my controller
