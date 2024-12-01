@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mc_project/model/product/product.dart';
 import 'package:mc_project/pages/add_product_page.dart';
 
@@ -14,8 +15,8 @@ class HomeController extends GetxController{
   TextEditingController productImgCtrl = TextEditingController();
   TextEditingController productPriceCtrl = TextEditingController();
 
-  String category = 'general';
-  String brand = 'un branded';
+  String category = 'General';
+  String brand = 'UnBranded';
   bool offer = false;
 
   List<Product> products = [];
@@ -47,7 +48,7 @@ class HomeController extends GetxController{
       doc.set(productJson);
       Get.snackbar('Success', 'Product added successfully',colorText: Colors.green);
       setValuesDefault();
-    } 
+    }
     catch (e) {
       Get.snackbar('Error', e.toString(),colorText: Colors.red);
     }
@@ -57,9 +58,9 @@ class HomeController extends GetxController{
   fetchProducts() async {
     try {
       QuerySnapshot productSnapshot = await productCollection.get();
-      final List<Product> retrievedProducts = productSnapshot.docs.map((doc) => 
+      final List<Product> retrievedProducts = productSnapshot.docs.map((doc) =>
                   Product.fromJson(doc.data() as Map<String, dynamic>)).toList();
-      
+
       products.clear();
       products.assignAll(retrievedProducts);
       Get.snackbar('Success', 'Product fetched successfully',colorText: Colors.green);
@@ -77,7 +78,7 @@ class HomeController extends GetxController{
       await productCollection.doc(id).delete();
       Get.snackbar('Success', 'Product deleted successfully',colorText: Colors.yellow);
       fetchProducts();
-      
+
     }catch (e) {
       Get.snackbar('Error', e.toString(),colorText: Colors.red);
     }
@@ -90,8 +91,8 @@ class HomeController extends GetxController{
     productImgCtrl.clear();
     productDescriptionCtrl.clear();
     productPriceCtrl.clear();
-    category = 'general';
-    brand = 'un branded';
+    category = 'General';
+    brand = 'Un Branded';
     offer = false;
     update();
   }

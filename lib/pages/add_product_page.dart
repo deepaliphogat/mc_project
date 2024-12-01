@@ -72,7 +72,7 @@ class AddProductPage extends StatelessWidget {
                 Row(
                   children: [
                     Flexible(child: DropdownBtn(
-                      items: ["Boots", "Shoe", "Beach Shoes", "High heels"],
+                      items: ["Boots", "Shoe", "Beach Shoes", "High heels","Sneakers"],
                       selectedItemText: ctrl.category,
                       onSelected: (selectedValue) {
                         ctrl.category = selectedValue ?? 'general';
